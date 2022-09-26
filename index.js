@@ -1,4 +1,4 @@
-/*Condicional*/
+/*Condicional
 alert("Debe elegir entre las siguientes opciones")
 alert("LEBAC: 100% TEA, Plazo Fijo: 85% TEA, Bono Soberano, 90% TEA")
 
@@ -19,7 +19,7 @@ function intereses(inversion){
 
 alert("Usted recibira al final $" + (valor * intereses(inversion)* (tiempo/365) + valor))
 
-/*Ciclos*/
+/*Ciclos
 alert("¿Cuantos dias de inversion necesito para alzanzar mi objetivo?");
 alert("LEBAC: 100% TEA, Plazo Fijo: 85% TEA, Bono Soberano, 90% TEA")
 
@@ -32,4 +32,4 @@ do{
     i++;
 }while (i<365*(valorDefinido-valor2)/(valor2*intereses(inversion2)))
 
-alert("Usted necesita " + i + " dias de inversion para alcanzar su objetivo")
+alert("Usted necesita " + i + " dias de inversion para alcanzar su objetivo")*/
