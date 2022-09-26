@@ -1,0 +1,20 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+footer{
+    display: flex;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: inherit;
+    background-color: #F8F9FA;
+    bottom: 0;
+}
+form{
+    height: auto;
+    width: 80%;
+    margin: 80px auto !important;
+}
