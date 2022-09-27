@@ -1,4 +1,4 @@
-/*Condicional
+/*Condicional*/
 alert("Debe elegir entre las siguientes opciones")
 
 let valor = parseInt(prompt("Ingrese el monto dispuesto a invertir"));
@@ -20,7 +20,7 @@ function intereses(inversion){
 
 alert("Usted recibira al final $" + (valor * intereses(inversion)* (tiempo/365) + valor))
 
-/*Ciclos
+/*Ciclos*/
 alert("¿Cuantos dias de inversion necesito para alzanzar mi objetivo?");
 
 let valor2 = parseInt(prompt("Ingrese el monto dispuesto a invertir"));
