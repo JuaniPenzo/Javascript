@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="index.js"></script>
     <link rel="stylesheet" href="./CSS/index.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">   
     <title>Tu Inversion Online</title>
@@ -64,10 +63,141 @@
               </div>
           </nav>
     </header>
-    <main></main>
+    <main>
+      <div id="simulador_inversiones">
+        <form>
+          <legend>Simulador de Inversiones</legend>
+          <div class="row mb-3">
+            <div class="form-floating mb-3">
+              <input type="number" class="form-control" id="monto_inversion" placeholder="Ingrese el monto dispuesto a invertir">
+              <label for="floatingInput">Ingrese el monto dispuesto a invertir</label>
+            </div>
+          </div>
+          <div class="row mb-3">
+            <div class="form-floating mb-3">
+              <input type="number" class="form-control" id="tiempo_inversion" placeholder="Ingrese el tiempo dispuesto a invertir">
+              <label for="floatingInput">Ingrese el tiempo dispuesto a invertir</label>
+            </div>
+          </div>
+          <fieldset class="row mb-3">
+            <legend class="col-form-label col-sm-2 pt-0">Inversion</legend>
+            <div class="col-sm-10">
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="gridRadios" id="lebac_1" value="2" checked="">
+                <label class="form-check-label" for="gridRadios1">LEBAC - 100% TEA</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="gridRadios" id="plazo_fijo_1" value="1.85">
+                <label class="form-check-label" for="gridRadios2">Plazo Fijo - 85% TEA</label>
+              </div>
+              <div class="form-check disabled">
+                <input class="form-check-input" type="radio" name="gridRadios" id="Bono_soberano_1" value="1.9">
+                <label class="form-check-label" for="gridRadios3">Bono Soberano - 90% TEA</label>
+              </div>
+            </div>
+          </fieldset>
+          <button type="submit" id="simular_inversion" class="btn btn-primary">Simular</button>
+          <button type="reset" id="resetar_inversion" class="btn btn-primary">Resetear</button>
+          <div class="input-group input-group-lg">
+            <span class="input-group-text">Recibira $</span>
+            <input type="number" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" id="recibira">
+          </div>
+        </form>
+      </div>
+      <div id="simulador_plazos">
+        <form>
+          <legend>Simulador de plazos</legend>
+          <div class="row mb-3">
+            <div class="form-floating mb-3">
+              <input type="number" class="form-control" id="monto_inversion_2" placeholder="Ingrese el monto dispuesto a invertir">
+              <label for="floatingInput">Ingrese el monto dispuesto a invertir</label>
+            </div>
+          </div>
+          <div class="row mb-3">
+            <div class="form-floating mb-3">
+              <input type="number" class="form-control" id="monto_inversion_22" placeholder="Ingrese el monto dispuesto a recibir">
+              <label for="floatingInput">Ingrese el monto dispuesto a recibir</label>
+            </div>
+          </div>
+          <fieldset class="row mb-3">
+            <legend class="col-form-label col-sm-2 pt-0">Inversion</legend>
+            <div class="col-sm-10">
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="gridRadios_2" id="lebac_2" value="2" checked="">
+                <label class="form-check-label" for="gridRadios1">LEBAC - 100% TEA</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="gridRadios_2" id="plazo_fijo_2" value="1.85">
+                <label class="form-check-label" for="gridRadios2">Plazo Fijo - 85% TEA</label>
+              </div>
+              <div class="form-check disabled">
+                <input class="form-check-input" type="radio" name="gridRadios_2" id="Bono_soberano_2" value="1.90">
+                <label class="form-check-label" for="gridRadios3">Bono Soberano - 90% TEA</label>
+              </div>
+            </div>
+          </fieldset>
+          <button type="submit" id="simular_inversion_2" class="btn btn-primary">Simular</button>
+          <button type="reset" id="resetar_inversion_2" class="btn btn-primary">Resetear</button>
+          <div class="input-group input-group-lg">
+            <span class="input-group-text">Tiempo Estimado</span>
+            <input type="number" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" id="tiempo_estimado">
+          </div>
+        </form>
+      </div>
+      <div id="simulador_cartera">
+        <form>
+          <legend>Simulador de cartera</legend>
+          <div class="row mb-3">
+            <div class="form-floating mb-3">
+              <input type="number" class="form-control" id="monto_cartera_3" placeholder="Ingrese el monto dispuesto a invertir">
+              <label for="floatingInput">Ingrese el monto dispuesto a invertir</label>
+            </div>
+          </div>
+          <div class="row mb-3">
+            <div class="form-floating mb-3">
+              <input type="number" class="form-control" id="tiempo_cartera_3" placeholder="Ingrese el tiempo dispuesto a invertir">
+              <label for="floatingInput">Ingrese el tiempo dispuesto a invertir</label>
+            </div>
+          </div>
+          <fieldset class="row mb-3">
+            <legend class="col-form-label col-sm-2 pt-0">Inversion</legend>
+            <div class="col-sm-10">
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="gridRadios_3" id="lebac_3" value="LEBAC">
+                <label class="form-check-label" for="gridRadios1">LEBAC - 100% TEA</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="gridRadios_3" id="plazo_fijo_3" value="Plazo Fijo">
+                <label class="form-check-label" for="gridRadios2">Plazo Fijo - 85% TEA</label>
+              </div>
+              <div class="form-check disabled">
+                <input class="form-check-input" type="radio" name="gridRadios_3" id="Bono_soberano_3" value="Bono Soberano">
+                <label class="form-check-label" for="gridRadios3">Bono Soberano - 90% TEA</label>
+              </div>
+            </div>
+          </fieldset>
+          <button type="submit" id="agregar" class="btn btn-primary">Agregar</button>
+          <button type="reset" id="borrar" class="btn btn-primary">Borrar</button>
+        </form>
+        <table class="table table-dark table-striped">
+          <thead>
+            <tr>
+              <th scope="col">Inversion</th>
+              <th scope="col">Monto</th>
+              <th scope="col">Tiempo</th>
+              <th scope="col">Total Ganado</th>
+            </tr>
+          </thead>
+          <tbody id="tablita">
+
+          </tbody>
+        </table>
+      </div>
+    </main>
     <footer>
       <div>Esta pagina es meramente de practica para JS</div>
     </footer>
+    <script src="index.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
 </body>
 </html>
