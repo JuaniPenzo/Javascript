@@ -2,7 +2,6 @@
 let monto_inversion_1 = document.getElementById("monto_inversion");
 let tiempo_inversion_1 = document.getElementById("tiempo_inversion");
 let simular_1 = document.getElementById("simular_inversion");
-let resetear_1 = document.getElementById("resetar_inversion")
 let recibira_1 = document.getElementById("recibira");
 let radios = document.getElementsByName('gridRadios');
 let valor =[]
@@ -26,18 +25,10 @@ function simularInversion(evento) {
     }
 }
 
-resetear_1.addEventListener('click', resetearInversion)
-
-function resetearInversion(evento){
-    evento.preventDefault();
-    valor.shift();
-}
-
 /*Simulador de plazos*/
 let monto_inversion_2 = document.getElementById("monto_inversion_2");
 let monto_inversion_22 = document.getElementById("monto_inversion_22");
 let simular_2 = document.getElementById("simular_inversion_2");
-let resetear_2 = document.getElementById("resetar_inversion_2")
 let tiempo_estimado_2 = document.getElementById("tiempo_estimado");
 let radios_2 = document.getElementsByName('gridRadios_2');
 let valor_2 =[]
@@ -70,13 +61,6 @@ function mostrarValor(evento) {
     if (monto_inversion_2.value>0 && monto_inversion_22.value>0 ) {
         tiempo_estimado_2.value = i
     }
-}
-
-resetear_2.addEventListener('click', resetearInversion_2)
-
-function resetearInversion_2(evento){
-    evento.preventDefault();
-    valor_2.shift();
 }
 
 /*Cartera de Inversiones*/
@@ -154,4 +138,3 @@ function mostrarInversion(){
                             </tr>`
     });
 }
-
