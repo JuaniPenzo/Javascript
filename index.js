@@ -65,11 +65,11 @@ function mostrarValor(evento) {
 
 /*Cartera de Inversiones*/
 let carrito = [];
+let valor_3 =[];
 let monto_cartera_3 = document.getElementById("monto_cartera_3");
 let tiempo_cartera_3 = document.getElementById("tiempo_cartera_3");
 let agregar = document.getElementById("agregar");
 let radios_3 = document.getElementsByName('gridRadios_3');
-let valor_3 =[]
 
 agregar.addEventListener('click', recibirValor_3);
 
@@ -109,7 +109,7 @@ class cartera{
 agregar.addEventListener('click', CargarunaInversion);
 agregar.addEventListener('click', mostrarInversion);
 agregar.addEventListener('click', borrarInfoInversion);
-
+agregar.addEventListener('click', guardarInversion);
 
 function CargarunaInversion() {
     let seleccion = new cartera();
@@ -123,18 +123,50 @@ function CargarunaInversion() {
 
     return seleccion;
 }
+function guardarInversion(){
+    let invest = JSON.stringify(carrito);
+    localStorage.setItem('Inversiones', invest);
+}
+
+let arr = JSON.parse(localStorage.getItem('Inversiones'))
+
+//Objetos
+const objeto1 = { id: 1, producto: "arroz"}
+const objeto2 = { id: 2, producto: "fideos"}
+const objetos = { id: 1, id: 2}
+
+//Recorrer objetos
+for (const producto of objetos) {
+    console.log(producto.id);
+}
+
 function borrarInfoInversion(){
-    carrito.shift();
     valor_3.shift();
+    //carrito.shift();
 }
 function mostrarInversion(){
     let tabla = document.getElementById("tablita")
-    carrito.forEach((elemento) => {
+    carrito.forEach((elemento) => { 
         tabla.innerHTML += `<tr>
-                                <th> ${elemento.inversion} </th>
+                                <th> ${elemento.inversion} </th> 
                                 <th> ${elemento.monto} </th>
                                 <th> ${elemento.tiempo} </th>
                                 <th> ${elemento.ganado} </th>
                             </tr>`
     });
 }
+
+/* Libreria QuickStar */
+var json = {
+    // chart settings
+    "chart": {
+      "type": "pie",
+      "data": [ /* Tengo que ir colocando los valores del LocalStorage*/
+        {"x": "Apples", "value": "128.14", fill: "green"},
+        {"x": "Oranges", "value": "128.14", fill: "orange"},
+      ],
+      "container": "container"
+    }
+  };
+  var chart = anychart.fromJson(json);
+  chart.draw();
