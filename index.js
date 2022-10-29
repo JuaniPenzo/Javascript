@@ -64,7 +64,7 @@ function mostrarValor(evento) {
 }
 
 /*Cartera de Inversiones*/
-let carrito = [];
+let carrito =JSON.parse(localStorage.getItem('Inversiones'))|| [];
 let valor_3 =[];
 let monto_cartera_3 = document.getElementById("monto_cartera_3");
 let tiempo_cartera_3 = document.getElementById("tiempo_cartera_3");
@@ -82,8 +82,8 @@ function recibirValor_3(evento) {
     };    
 };
 
-function recibirValor_31() {
-    switch (valor_3[0]) {
+function recibirValor_31(valor_3) {
+    switch (valor_3) {
         case "LEBAC":
             return 2
         case "Plazo Fijo":
@@ -107,17 +107,16 @@ class cartera{
 }
 
 agregar.addEventListener('click', CargarunaInversion);
-agregar.addEventListener('click', mostrarInversion);
-agregar.addEventListener('click', borrarInfoInversion);
 agregar.addEventListener('click', guardarInversion);
+agregar.addEventListener('click', mostrarInversion);
 
 function CargarunaInversion() {
     let seleccion = new cartera();
 
-    seleccion.inversion = valor_3[0];
+    seleccion.inversion = valor_3[valor_3.length-1];
     seleccion.monto = monto_cartera_3.value;
     seleccion.tiempo = tiempo_cartera_3.value;
-    seleccion.ganado = (parseFloat(monto_cartera_3.value)+recibirValor_31(valor_3[0])*parseFloat(monto_cartera_3.value)*parseFloat(tiempo_cartera_3.value)/365);
+    seleccion.ganado = (parseFloat(monto_cartera_3.value)+recibirValor_31(valor_3[valor_3.length-1])*parseFloat(monto_cartera_3.value)*parseFloat(tiempo_cartera_3.value)/365);
 
     carrito.push(seleccion);
 
@@ -128,24 +127,9 @@ function guardarInversion(){
     localStorage.setItem('Inversiones', invest);
 }
 
-let arr = JSON.parse(localStorage.getItem('Inversiones'))
-
-//Objetos
-const objeto1 = { id: 1, producto: "arroz"}
-const objeto2 = { id: 2, producto: "fideos"}
-const objetos = { id: 1, id: 2}
-
-//Recorrer objetos
-for (const producto of objetos) {
-    console.log(producto.id);
-}
-
-function borrarInfoInversion(){
-    valor_3.shift();
-    //carrito.shift();
-}
 function mostrarInversion(){
     let tabla = document.getElementById("tablita")
+    tabla.innerHTML = ``
     carrito.forEach((elemento) => { 
         tabla.innerHTML += `<tr>
                                 <th> ${elemento.inversion} </th> 
@@ -156,17 +140,17 @@ function mostrarInversion(){
     });
 }
 
-/* Libreria QuickStar */
+/* Libreria QuickStar (proximamente)
 var json = {
     // chart settings
     "chart": {
       "type": "pie",
-      "data": [ /* Tengo que ir colocando los valores del LocalStorage*/
+      "data": [
         {"x": "Apples", "value": "128.14", fill: "green"},
-        {"x": "Oranges", "value": "128.14", fill: "orange"},
+        {"x": "Oranges", "value": "125.14", fill: "orange"},
       ],
       "container": "container"
     }
   };
   var chart = anychart.fromJson(json);
-  chart.draw();
+  chart.draw();*/
