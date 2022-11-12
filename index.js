@@ -140,17 +140,113 @@ function mostrarInversion(){
     });
 }
 
-/* Libreria QuickStar (proximamente)
-var json = {
-    // chart settings
-    "chart": {
-      "type": "pie",
-      "data": [
-        {"x": "Apples", "value": "128.14", fill: "green"},
-        {"x": "Oranges", "value": "125.14", fill: "orange"},
-      ],
-      "container": "container"
+/*Grafico con uso de librerias*/
+let grafico = document.getElementById("id_grafico")
+
+let monto_lebac = 0;
+let monto_plazofijo = 0;
+let monto_bonosoberano = 0;
+
+
+carrito.forEach((elemento)=>{
+    if (elemento.inversion === "LEBAC") {
+        monto_lebac += parseFloat(elemento.monto)
+    };
+    if (elemento.inversion === "Plazo Fijo") {
+        monto_plazofijo += parseFloat(elemento.monto)
+    };
+    if (elemento.inversion === "Bono Soberano") {
+        monto_bonosoberano += parseFloat(elemento.monto)
     }
-  };
-  var chart = anychart.fromJson(json);
-  chart.draw();*/
+})
+
+let id_grafico = new Chart(grafico, {
+    type:"pie",
+    data: {
+        labels: [
+        'Lebac',
+        'Plazo Fijo',
+        'Bono Soberano'
+    ],
+        datasets: [{
+        label: 'My First Dataset',
+        data: [monto_lebac, monto_plazofijo, monto_bonosoberano],
+        backgroundColor: [
+            'rgb(255, 99, 132)',
+            'rgb(54, 162, 235)',
+            'rgb(255, 205, 86)'
+        ],
+        hoverOffset: 4
+        }]
+    }
+})
+
+/* Conexion con la API */
+let mostrarDatos = document.getElementById("exposicion_datos")
+let leliqb = document.getElementById("leliqb")
+let depositob = document.getElementById("depositob")
+let badlarb = document.getElementById("badlarb")
+
+leliqb.addEventListener('click', mostrarLeliq)
+depositob.addEventListener('click', mostrarDeposito)
+badlarb.addEventListener('click', mostarbadlar)
+
+    //leliq
+function mostrarLeliq(){
+    fetch("https://api.estadisticasbcra.com/tasa_leliq",{
+        headers:{
+            Authorization: "BEARER eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2OTk3NDkxMjAsInR5cGUiOiJleHRlcm5hbCIsInVzZXIiOiJqdWFuaXBlbnpvOTdAZ21haWwuY29tIn0.TiX7m6UdmFG95d2Zl7wEi-qYlATwZIfGLnbXhMyQceRzct_2QK73hKOeUEZkIc9BGHIO-9V97Ny1IRyoxX3M0Q"},
+    })
+    .then((response)=>response.json())
+    .then((data)=>{
+        let datas = data.slice(data.length-10)
+        mostrarDatos.innerHTML=""
+        datas.forEach(elemento=>{
+            mostrarDatos.innerHTML += `<tr>
+            <th> ${elemento.d} </th> 
+            <th> ${elemento.v} </th>
+                            </tr>`
+        })
+    })
+    .catch((err)=>console.log(err))
+}
+
+    //depositos
+function mostrarDeposito(){
+    fetch("https://api.estadisticasbcra.com/tasa_depositos_30_dias",{
+        headers:{
+            Authorization: "BEARER eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2OTk3NDkxMjAsInR5cGUiOiJleHRlcm5hbCIsInVzZXIiOiJqdWFuaXBlbnpvOTdAZ21haWwuY29tIn0.TiX7m6UdmFG95d2Zl7wEi-qYlATwZIfGLnbXhMyQceRzct_2QK73hKOeUEZkIc9BGHIO-9V97Ny1IRyoxX3M0Q"},
+    })
+    .then((response)=>response.json())
+    .then((data)=>{
+        let datas = data.slice(data.length-10)
+        mostrarDatos.innerHTML=""
+        datas.forEach(elemento=>{
+            mostrarDatos.innerHTML += `<tr>
+            <th> ${elemento.d} </th> 
+            <th> ${elemento.v} </th>
+                            </tr>`
+        })
+    })
+    .catch((err)=>console.log(err))
+}
+
+    //badlar
+function mostarbadlar(){
+    fetch("https://api.estadisticasbcra.com/tasa_badlar",{
+        headers:{
+            Authorization: "BEARER eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2OTk3NDkxMjAsInR5cGUiOiJleHRlcm5hbCIsInVzZXIiOiJqdWFuaXBlbnpvOTdAZ21haWwuY29tIn0.TiX7m6UdmFG95d2Zl7wEi-qYlATwZIfGLnbXhMyQceRzct_2QK73hKOeUEZkIc9BGHIO-9V97Ny1IRyoxX3M0Q"},
+    })
+    .then((response)=>response.json())
+    .then((data)=>{
+        let datas = data.slice(data.length-10)
+        mostrarDatos.innerHTML=""
+        datas.forEach(elemento=>{
+            mostrarDatos.innerHTML += `<tr>
+            <th> ${elemento.d} </th> 
+            <th> ${elemento.v} </th>
+                            </tr>`
+        })
+    })
+    .catch((err)=>console.log(err))
+}
