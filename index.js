@@ -147,39 +147,58 @@ let monto_lebac = 0;
 let monto_plazofijo = 0;
 let monto_bonosoberano = 0;
 
+agregar.addEventListener("click", carritoG)
 
-carrito.forEach((elemento)=>{
-    if (elemento.inversion === "LEBAC") {
-        monto_lebac += parseFloat(elemento.monto)
-    };
-    if (elemento.inversion === "Plazo Fijo") {
-        monto_plazofijo += parseFloat(elemento.monto)
-    };
-    if (elemento.inversion === "Bono Soberano") {
-        monto_bonosoberano += parseFloat(elemento.monto)
+function carritoG(){
+    monto_lebac=0
+    monto_plazofijo=0
+    monto_bonosoberano=0
+    carrito.forEach((elemento)=>{
+        if (elemento.inversion === "LEBAC") {
+            monto_lebac += parseFloat(elemento.monto)
+        };
+        if (elemento.inversion === "Plazo Fijo") {
+            monto_plazofijo += parseFloat(elemento.monto)
+        };
+        if (elemento.inversion === "Bono Soberano") {
+            monto_bonosoberano += parseFloat(elemento.monto)
+        }
+    })
+}
+
+carritoG();
+
+agregar.addEventListener("click", pintarGrafico)
+
+let id_grafico 
+
+function pintarGrafico(){
+    if (id_grafico) {
+        id_grafico.destroy();
     }
-})
-
-let id_grafico = new Chart(grafico, {
-    type:"pie",
-    data: {
-        labels: [
-        'Lebac',
-        'Plazo Fijo',
-        'Bono Soberano'
-    ],
-        datasets: [{
-        label: 'My First Dataset',
-        data: [monto_lebac, monto_plazofijo, monto_bonosoberano],
-        backgroundColor: [
-            'rgb(255, 99, 132)',
-            'rgb(54, 162, 235)',
-            'rgb(255, 205, 86)'
+    id_grafico = new Chart(grafico, {
+        type:"pie",
+        data: {
+            labels: [
+            'Lebac',
+            'Plazo Fijo',
+            'Bono Soberano'
         ],
-        hoverOffset: 4
-        }]
-    }
-})
+            datasets: [{
+            label: 'My First Dataset',
+            data: [monto_lebac, monto_plazofijo, monto_bonosoberano],
+            backgroundColor: [
+                'rgb(255, 99, 132)',
+                'rgb(54, 162, 235)',
+                'rgb(255, 205, 86)'
+            ],
+            hoverOffset: 4
+            }]
+        }
+    })
+}
+
+pintarGrafico()
 
 /* Conexion con la API */
 let mostrarDatos = document.getElementById("exposicion_datos")
